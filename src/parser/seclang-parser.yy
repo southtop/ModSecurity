@@ -37,6 +37,7 @@ class Driver;
 #include "src/actions/disruptive/pass.h"
 #include "src/actions/disruptive/redirect.h"
 #include "src/actions/init_col.h"
+#include "src/actions/exec.h"
 #include "src/actions/log_data.h"
 #include "src/actions/log.h"
 #include "src/actions/maturity.h"
@@ -2296,7 +2297,7 @@ act:
       }
     | ACTION_EXEC
       {
-        ACTION_NOT_SUPPORTED("Exec", @0);
+        ACTION_CONTAINER($$, new actions::Exec($1));
       }
     | ACTION_EXPIRE_VAR
       {

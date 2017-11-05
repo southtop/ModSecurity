@@ -71,6 +71,7 @@ class Driver;
 #include "src/actions/disruptive/pass.h"
 #include "src/actions/disruptive/redirect.h"
 #include "src/actions/init_col.h"
+#include "src/actions/exec.h"
 #include "src/actions/log_data.h"
 #include "src/actions/log.h"
 #include "src/actions/maturity.h"
@@ -368,7 +369,7 @@ using modsecurity::operators::Operator;
 
 
 
-#line 372 "seclang-parser.hh" // lalr1.cc:377
+#line 373 "seclang-parser.hh" // lalr1.cc:377
 
 # include <cassert>
 # include <cstdlib> // std::abort
@@ -445,7 +446,7 @@ using modsecurity::operators::Operator;
 
 
 namespace yy {
-#line 449 "seclang-parser.hh" // lalr1.cc:377
+#line 450 "seclang-parser.hh" // lalr1.cc:377
 
 
 
@@ -5768,7 +5769,7 @@ namespace yy {
 
 
 } // yy
-#line 5772 "seclang-parser.hh" // lalr1.cc:377
+#line 5773 "seclang-parser.hh" // lalr1.cc:377
 
 
 

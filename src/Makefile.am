@@ -79,7 +79,7 @@ noinst_HEADERS = \
 
 
 ENGINES = \
-	engines/lua.cc
+	engine/lua.cc
 
 
 VARIABLES = \
@@ -121,6 +121,7 @@ ACTIONS = \
 	actions/disruptive/deny.cc \
 	actions/disruptive/redirect.cc \
 	actions/disruptive/pass.cc \
+	actions/exec.cc \
 	actions/init_col.cc \
 	actions/log.cc \
 	actions/log_data.cc \
