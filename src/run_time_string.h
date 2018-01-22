@@ -40,11 +40,16 @@ class RunTimeElementHolder {
 
 class RunTimeString {
  public:
-    RunTimeString() {
-    };
+    RunTimeString() :
+        m_containsMacro(false) { };
     void appendText(std::string &text);
     void appendVar(std::unique_ptr<modsecurity::Variables::Variable> var);
     std::string evaluate(Transaction *t);
+    std::string evaluate() {
+        return evaluate(NULL);
+    }
+    bool containsMacro();
+    bool m_containsMacro;
 
  protected:
     std::list<std::unique_ptr<RunTimeElementHolder>> m_elements;

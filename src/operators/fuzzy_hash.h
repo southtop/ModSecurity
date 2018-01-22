@@ -36,12 +36,8 @@ struct fuzzy_hash_chunk {
 class FuzzyHash : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    FuzzyHash(std::string o, std::string p, bool n)
-        : Operator(o, p, n),
-        m_head(NULL),
-        m_threshold(0) { }
-    explicit FuzzyHash(std::string param)
-        : Operator("FuzzyHash", param),
+    explicit FuzzyHash(std::unique_ptr<RunTimeString> param)
+        : Operator("FuzzyHash", std::move(param)),
         m_head(NULL),
         m_threshold(0) { }
     ~FuzzyHash();

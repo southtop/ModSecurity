@@ -27,12 +27,11 @@ namespace operators {
 class IpMatch : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    IpMatch(std::string op, std::string param, bool negation)
-        : Operator(op, param, negation) { }
-    IpMatch(std::string op, std::string param)
-        : Operator(op, param) { }
-    explicit IpMatch(std::string param)
-        : Operator("IpMatch", param) { }
+    explicit IpMatch(std::unique_ptr<RunTimeString> param)
+        : Operator("IpMatch", std::move(param)) { }
+    IpMatch(std::string n, std::unique_ptr<RunTimeString> param)
+        : Operator(n, std::move(param)) { }
+
     bool evaluate(Transaction *transaction, const std::string &input) override;
 
     bool init(const std::string &file, std::string *error) override;

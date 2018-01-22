@@ -28,12 +28,8 @@ namespace operators {
 class InspectFile : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    InspectFile(std::string o, std::string p, bool n)
-        : Operator(o, p, n),
-        m_file(""),
-        m_isScript(false) { }
-    explicit InspectFile(std::string param)
-        : Operator("InspectFile", param),
+    explicit InspectFile(std::unique_ptr<RunTimeString> param)
+        : Operator("InspectFile", std::move(param)),
         m_file(""),
         m_isScript(false) { }
 

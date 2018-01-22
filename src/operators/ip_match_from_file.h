@@ -25,13 +25,10 @@ namespace operators {
 class IpMatchFromFile : public IpMatch {
  public:
     /** @ingroup ModSecurity_Operator */
-    IpMatchFromFile(std::string op, std::string param, bool negation)
-        : IpMatch(op, param, negation) { }
-    IpMatchFromFile(std::string op, std::string param)
-        : IpMatch(op, param) { }
-    explicit IpMatchFromFile(std::string param)
-        : IpMatch("IpMatchFromFile", param) { }
-
+    explicit IpMatchFromFile(std::unique_ptr<RunTimeString> param)
+        : IpMatch("IpMatchFromFile", std::move(param)) { }
+    IpMatchFromFile(std::string n, std::unique_ptr<RunTimeString> param)
+        : IpMatch(n, std::move(param)) { }
     bool init(const std::string& file, std::string *error) override;
 };
 

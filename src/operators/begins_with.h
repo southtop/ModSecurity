@@ -28,10 +28,8 @@ namespace operators {
 class BeginsWith : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    BeginsWith(std::string op, std::string param, bool negation)
-        : Operator(op, param, negation) { }
-    explicit BeginsWith(std::string param)
-        : Operator("BeginsWith", param) { }
+    explicit BeginsWith(std::unique_ptr<RunTimeString> param)
+        : Operator("BeginsWith", std::move(param)) { }
 
     bool evaluate(Transaction *transaction, Rule *rule, const std::string &str,
         std::shared_ptr<RuleMessage> ruleMessage) override;

@@ -29,10 +29,8 @@ namespace operators {
 class StrEq : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    StrEq(std::string op, std::string param, bool negation)
-        : Operator(op, param, negation) { }
-    explicit StrEq(std::string param)
-        : Operator("StrEq", param) { }
+    explicit StrEq(std::unique_ptr<RunTimeString> param)
+        : Operator("StrEq", std::move(param)) { }
 
     bool evaluate(Transaction *transaction, const std::string &str) override;
 };

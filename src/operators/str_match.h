@@ -27,10 +27,10 @@ namespace operators {
 class StrMatch : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    StrMatch(std::string op, std::string param, bool negation)
-        : Operator(op, param, negation) { }
-    explicit StrMatch(std::string param)
-        : Operator("StrMatch", param) { }
+    explicit StrMatch(std::unique_ptr<RunTimeString> param)
+        : Operator("StrMatch", std::move(param)) {
+            m_couldContainsMacro = true;
+        }
 
     bool evaluate(Transaction *transaction, const std::string &input) override;
 };

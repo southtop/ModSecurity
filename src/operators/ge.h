@@ -20,17 +20,16 @@
 
 #include "src/operators/operator.h"
 
-
 namespace modsecurity {
 namespace operators {
 
 class Ge : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    Ge(std::string op, std::string param, bool negation)
-        : Operator(op, param, negation) { }
-    explicit Ge(std::string param)
-        : Operator("Ge", param) { }
+    explicit Ge(std::unique_ptr<RunTimeString> param)
+        : Operator("Ge", std::move(param)) {
+            m_couldContainsMacro = true;
+        }
     bool evaluate(Transaction *transaction, const std::string &input) override;
 };
 

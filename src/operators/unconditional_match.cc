@@ -20,6 +20,7 @@ namespace operators {
 
 bool UnconditionalMatch::evaluate(Transaction *transaction,
     const std::string &input) {
+    transaction->debug(9, "unconditional_match");
     return true;
 }
 

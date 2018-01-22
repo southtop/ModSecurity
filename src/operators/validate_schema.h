@@ -33,13 +33,8 @@ namespace operators {
 class ValidateSchema : public Operator {
  public:
     /** @ingroup ModSecurity_Operator */
-    ValidateSchema(std::string o, std::string p, bool i)
-        : Operator(o, p, i),
-        m_parserCtx(NULL),
-        m_validCtx(NULL),
-        m_schema(NULL) { }
-    explicit ValidateSchema(std::string param)
-        : Operator("ValidateSchema", param),
+    explicit ValidateSchema(std::unique_ptr<RunTimeString> param)
+        : Operator("ValidateSchema", std::move(param)),
         m_parserCtx(NULL),
         m_validCtx(NULL),
         m_schema(NULL) { }
